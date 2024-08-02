@@ -9,7 +9,7 @@
     font-weight: 700;
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: aqua;
+    color: rgba(28, 29, 29, 0.664);
   }
   
   .container {
@@ -31,11 +31,14 @@
   }
   
   .course-item {
+    max-width: 50rem;
     padding: 0.9rem;
     border-radius: 1rem;
     background-color: #fff;
     margin-bottom: 2rem;
     display: flex;
+    align-items: center;
+     background-color: #eae0d4;
   }
   
   .course-item__detail {
