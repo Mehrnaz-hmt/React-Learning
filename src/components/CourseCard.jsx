@@ -1,13 +1,13 @@
 import React from "react";
-import { courses } from "./CourseList";
+// import { courses } from "./CourseList";
 
-function CourseCard() {
+function CourseCard({courses}) {
   return (
     <div className="course-list">
       {courses.map((course) => {
         return (<div key={course.id} className="course-item">
             <div className="course-item__img">
-              <img src="../public/images/Next.png" alt="image-1" />
+              <img src={course.imageUrl} alt="image-1" />
             </div>
             <div className="course-item__detail">
               <div className="course-item__body">
