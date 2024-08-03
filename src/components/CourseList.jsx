@@ -1,10 +1,10 @@
 import CourseCard from "./CourseCard";
 
- const courses = [
+const courses = [
   {
     id: 1,
-    title: "English Lecture",
-    description: "language lessons with the most popular teachers",
+    title: "Javascript",
+    description: "Javascript is the most popular web language",
     imageUrl: "../../images/js.png",
     rate: "4.5",
     tags: ["langauges"],
@@ -13,21 +13,21 @@ import CourseCard from "./CourseCard";
   },
   {
     id: 2,
-    title: "Design Strategy",
+    title: "Next.JS",
     description:
-      "lesson on planning design concept and proper planning of work",
-      imageUrl: "../../images/next.png",
+      "Learning Next is sweet",
+    imageUrl: "../../images/next.png",
     rate: "4",
     tags: ["UI/UX design", "web design"],
-    start: "2023-07-01T20:46:30.615Z",
+    start: "2023-03-01T20:46:30.615Z",
     status: "Upcoming",
   },
   {
     id: 3,
-    title: "Business Lecture",
+    title: "React.JS",
     description:
-      "lectures on how to build your buisness safely without fare of new projects",
-      imageUrl: "../../images/React.png",
+      "React.JS is a simple,beautifuuul library",
+    imageUrl: "../../images/React.png",
     rate: "3.9",
     tags: ["Marketing", "Finance"],
     start: "2023-07-01T20:46:30.615Z",
@@ -36,6 +36,10 @@ import CourseCard from "./CourseCard";
 ];
 
 export default function CourseList() {
-  return <CourseCard courses={courses} key={courses.id}/>;
+  
+  return (
+    <div  className="course-list">
+      {courses.map((course) =>  <CourseCard course={course} key={course.id} />)}
+    </div>
+  );
 }
-

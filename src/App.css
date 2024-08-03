@@ -73,7 +73,7 @@
   
   .course-item__img img {
     width: 15rem;
-    height: auto;
+    height: 12rem;
     border-radius: 1rem;
     overflow: hidden;
   }
