@@ -33,9 +33,9 @@ function CourseCardFooter({ course }) {
   return (
     <div className="course-item__footer">
       <div className="tags">
-        {course.tags.map((tag) => {
+        {course.tags.map((tag,index) => {
           return (
-            <span key={tag} className="badge badge--secondary">
+            <span key={index} className="badge badge--secondary">
               {tag}
             </span>
           );
