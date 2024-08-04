@@ -20,15 +20,30 @@
   .course-status {
     display: flex;
     justify-content: space-around;
-    margin: 2rem;
+    margin: 2rem ;
     color: #64748b;
     font-weight: 300;
+    background-color: #eae0d4;
+    padding: 1rem;
+    border-radius: 1rem;
   }
   
   .course-status .active {
     font-weight: 700;
     color: #334155;
   }
+
+  .course--status-item a{
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .course--status-item:active,
+  .course--status-item:hover {
+    color: rgb(37, 41, 37);
+    cursor: pointer;
+  }
+
   
   .course-item {
     max-width: 50rem;
@@ -46,7 +61,11 @@
     justify-self: start;
     padding: 1rem 0 1rem 1rem;
   }
-  
+  .course-status div a {
+    text-decoration: none;
+    font-weight: 600;
+   color: #334155;
+}
   .course-item__body {
     display: flex;
     justify-content: space-between;
