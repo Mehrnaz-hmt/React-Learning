@@ -19,7 +19,27 @@ const tabData = [
 ];
 
 function App() {
-return <h1>Tab Component : starter file</h1>
+
+  //activeTab ==> update UI
+  //Update Tab style
+  // Indicator ==>
+  // Update Content
+
+  const activetab = 1;
+
+  return (
+    <div className="tab">
+      <div className="tab__header">
+        {tabData.map((tab) => (
+          <button key={tab.id} className={activetab === tab.id ? "active" : ""}>
+            <span>{tab.title}</span>
+            <span className="tab-indicator"></span>
+          </button>
+        ))}
+      </div>
+      <div className="tab__content">{tabData[activetab -  1].content}</div>
+    </div>
+  );
 }
 
 export default App;
