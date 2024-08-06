@@ -20,31 +20,39 @@ const tabData = [
 
 function App() {
   const [activeTab, setActiveTab] = useState(2);
-  const [user,setUser] = useState({name:"Ali"});
+  const [isOpen, setIsOpen] = useState(true);
 
   const handlerActive = (id) => {
-    //  console.log("clicked!!" , {id})
     setActiveTab(id);
-    setUser({name:"Ali"})
+    setUser({ name: "Ali" });
   };
 
-  console.log(activeTab)
+  function TabComponent() {
+    return (
+      <div className="tab">
+        <div className="tab__header">
+          {tabData.map((tab) => (
+            <button
+              onClick={() => handlerActive(tab.id)}
+              key={tab.id}
+              className={activeTab === tab.id ? "active" : ""}
+            >
+              <span>{tab.title}</span>
+              <span className="tab-indicator"></span>
+            </button>
+          ))}
+        </div>
+        <div className="tab__content">{tabData[activeTab - 1].content}</div>
+      </div>
+    );
+  }
 
   return (
-    <div className="tab">
-      <div className="tab__header">
-        {tabData.map((tab) => (
-          <button
-            onClick={() => handlerActive(tab.id)}
-            key={tab.id}
-            className={activeTab === tab.id ? "active" : ""}
-          >
-            <span>{tab.title}</span>
-            <span className="tab-indicator"></span>
-          </button>
-        ))}
-      </div>
-      <div className="tab__content">{tabData[activeTab - 1].content} - {user.name}</div>
+    <div>
+      {isOpen ? <TabComponent /> : <p>Close tab</p>}
+      <button className="hide-tab " onClick={() => setIsOpen(!isOpen)}>
+        Hide
+      </button>
     </div>
   );
 }
