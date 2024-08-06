@@ -19,16 +19,16 @@ const tabData = [
 ];
 
 function App() {
-  //activeTab ==> update UI
-  //Update Tab style
-  // Indicator ==>
-  // Update Content
+  const [activeTab, setActiveTab] = useState(2);
+  const [user,setUser] = useState({name:"Ali"});
 
-  const activetab = 1;
+  const handlerActive = (id) => {
+    //  console.log("clicked!!" , {id})
+    setActiveTab(id);
+    setUser({name:"Ali"})
+  };
 
-  const handlerActive = (id)  => {
-   console.log("clicked!!" , {id})
-  }
+  console.log(activeTab)
 
   return (
     <div className="tab">
@@ -37,14 +37,14 @@ function App() {
           <button
             onClick={() => handlerActive(tab.id)}
             key={tab.id}
-            className={activetab === tab.id ? "active" : ""}
+            className={activeTab === tab.id ? "active" : ""}
           >
             <span>{tab.title}</span>
             <span className="tab-indicator"></span>
           </button>
         ))}
       </div>
-      <div className="tab__content">{tabData[activetab - 1].content}</div>
+      <div className="tab__content">{tabData[activeTab - 1].content} - {user.name}</div>
     </div>
   );
 }
