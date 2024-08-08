@@ -21,10 +21,11 @@ const tabData = [
 function App() {
   const [activeTab, setActiveTab] = useState(2);
   const [isOpen, setIsOpen] = useState(true);
+  const [counter, setCounter] = useState(0);
 
   const handlerActive = (id) => {
     setActiveTab(id);
-    setUser({ name: "Ali" });
+    setCounter((counter) => counter + 2);
   };
 
   function TabComponent() {
@@ -42,17 +43,21 @@ function App() {
             </button>
           ))}
         </div>
-        <div className="tab__content">{tabData[activeTab - 1].content}</div>
+        <div className="tab__content">
+          {tabData[activeTab - 1].content} -{" "}
+          {counter}
+        </div>
       </div>
     );
   }
 
   return (
     <div>
-      {isOpen ? <TabComponent /> : <p>Close tab</p>}
       <button className="hide-tab " onClick={() => setIsOpen(!isOpen)}>
-        Hide
+        {" "}
+        ❌{" "}
       </button>
+      {isOpen ? <TabComponent /> : <p>Close tab</p>}
     </div>
   );
 }
