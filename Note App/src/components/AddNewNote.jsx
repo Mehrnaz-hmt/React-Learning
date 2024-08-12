@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function AddNewNote() {
+export default function AddNewNote({ onAddNote }) {
   //states:
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -8,21 +8,23 @@ export default function AddNewNote() {
   // Handlers
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!title || !description) return null;
+
     const newNote = {
       title,
       description,
-       id:Date.now(), // time stamp
-      completed:false,
-      createdAt:new Date().toISOString(),
+      id: Date.now(), // time stamp
+      completed: false,
+      createdAt: new Date().toISOString(),
     };
+
     console.log(newNote);
     setTitle("");
-      setDescription("");
-  };
+    setDescription("");
 
-  // const handleChange = (e) => {
-  //   setTitle(e.target.value);
-  // };
+    // setNotes((prevNotes) => [...prevNotes, newNote]);
+    onAddNote(newNote)
+  };
 
   return (
     <div className="add-new-note">
