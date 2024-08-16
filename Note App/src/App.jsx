@@ -12,6 +12,11 @@ function App() {
     setNotes((prevNotes) => [...prevNotes, newNote]);
   };
 
+  const handleDeleteNote = (id) => {
+    //  return setNotes(notes.filter(note => note.id !== id)); //this solution is correct too!
+    return setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id)); //more professional
+  };
+
   return (
     <div className="container">
       <div className="note-header">note haeder</div>
@@ -21,12 +26,12 @@ function App() {
         </div>
         <div className="note-container">
           hi
-        <NoteList notes={notes}/>
-        hi
+          <NoteList onDelete={handleDeleteNote} notes={notes} />
+          {console.log(notes)}
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default App;
