@@ -17,6 +17,20 @@ function App() {
     return setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id)); //more professional
   };
 
+  const handleCompleteNote = (e) => {
+    const noteId = Number(e.target.value);
+    // const newNotes = notes.map((note) =>
+    //   note.id === noteId ? { ...note, completed: !note.completed } : note
+    // );
+    //setNotes(newNotes);
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        note.id === noteId ? { ...note, completed: !note.completed } : note
+      )
+    );
+    console.log(notes)
+  };
+
   return (
     <div className="container">
       <div className="note-header">note haeder</div>
@@ -26,8 +40,11 @@ function App() {
         </div>
         <div className="note-container">
           hi
-          <NoteList onDelete={handleDeleteNote} notes={notes} />
-          {console.log(notes)}
+          <NoteList
+            onDelete={handleDeleteNote}
+            notes={notes}
+            onComplete={handleCompleteNote}
+          />
         </div>
       </div>
     </div>

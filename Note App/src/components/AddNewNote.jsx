@@ -18,7 +18,6 @@ export default function AddNewNote({ onAddNote }) {
       createdAt: new Date().toISOString(),
     };
 
-    console.log(newNote);
     setTitle("");
     setDescription("");
 

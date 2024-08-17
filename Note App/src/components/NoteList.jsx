@@ -1,10 +1,15 @@
 import React from "react";
 
-function NoteList({ notes ,onDelete}) {
+function NoteList({ notes, onDelete, onComplete }) {
   return (
     <div className="note-list">
       {notes.map((note) => (
-        <NoteItem onDelete={onDelete} key={note.id} note={note} />
+        <NoteItem
+          onDelete={onDelete}
+          key={note.id}
+          note={note}
+          onComplete={onComplete}
+        />
       ))}
     </div>
   );
@@ -12,7 +17,7 @@ function NoteList({ notes ,onDelete}) {
 
 export default NoteList;
 
-function NoteItem({ note,onDelete }) {
+function NoteItem({ note, onDelete, onComplete, isChecked }) {
   const options = {
     year: "numeric",
     month: "long",
@@ -20,7 +25,7 @@ function NoteItem({ note,onDelete }) {
   };
 
   return (
-    <div className="note-item">
+    <div className={`note-item ${note.completed ? "completed" : ""}`}>
       <div className="note-item__header">
         <div>
           <p className="title">{note.title}</p>
@@ -28,7 +33,14 @@ function NoteItem({ note,onDelete }) {
         </div>
         <div className="actions">
           <button onClick={() => onDelete(note.id)}>❌ </button>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            name={note.title} //NOT necessary
+            id={note.id} //NOT necessary
+            value={note.id} 
+            checked={note.completed}
+            onChange={onComplete}
+          />
         </div>
       </div>
       <div className="note-item__footer">
