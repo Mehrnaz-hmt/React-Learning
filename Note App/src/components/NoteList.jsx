@@ -1,9 +1,25 @@
 import React from "react";
 
-function NoteList({ notes, onDelete, onComplete }) {
+function NoteList({ notes, onDelete, onComplete, sortBy }) {
+  let sortedNotes = notes;
+  if (sortBy === "earliest")
+    sortedNotes = [...notes].sort(
+      (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+    ); //ascending from past until now a - b ==> a > b ? 1 : -1
+
+  if (sortBy === "latest")
+    sortedNotes = [...notes].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    ); // b - a ==>  a > b ? -1 : 1
+
+  if (sortBy === "completed")
+    sortedNotes = [...notes].sort(
+      (a, b) => Number(b.completed) - Number(a.completed)
+    );
+
   return (
     <div className="note-list">
-      {notes.map((note) => (
+      {sortedNotes.map((note) => (
         <NoteItem
           onDelete={onDelete}
           key={note.id}
@@ -37,7 +53,7 @@ function NoteItem({ note, onDelete, onComplete, isChecked }) {
             type="checkbox"
             name={note.title} //NOT necessary
             id={note.id} //NOT necessary
-            value={note.id} 
+            value={note.id}
             checked={note.completed}
             onChange={onComplete}
           />
