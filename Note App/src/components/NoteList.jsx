@@ -1,11 +1,13 @@
 import React from "react";
 
 function NoteList({ notes, onDelete, onComplete, sortBy }) {
+  
   let sortedNotes = notes;
-  if (sortBy === "earliest")
+  if (sortBy === "earliest") {
     sortedNotes = [...notes].sort(
       (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
     ); //ascending from past until now a - b ==> a > b ? 1 : -1
+  }
 
   if (sortBy === "latest")
     sortedNotes = [...notes].sort(

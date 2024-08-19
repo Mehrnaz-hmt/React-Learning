@@ -1,4 +1,5 @@
 import React from "react";
+import Message from "./Message";
 
 function NoteStatus({ notes }) {
   //derived states:  => maybe we don't need to creating new states
@@ -7,7 +8,13 @@ function NoteStatus({ notes }) {
   const openNotes = notes.filter((note) => note.completed === false).length;
 
   //conditional rendering
-  if (!allNotes) return <h3>No notes has already been added!🤷‍♀️</h3>;
+  if (!allNotes)
+    return (
+      <Message text="No notes has already been added!" icon="🤷‍♀️">
+        <span>This is children content.</span>
+        <span>👶</span>
+      </Message>
+    );
   return (
     <ul className="note-status">
       <li>

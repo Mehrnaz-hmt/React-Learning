@@ -6,11 +6,12 @@ import NoteStatus from "./components/NoteStatus";
 import NoteHeader from "./components/NoteHeader";
 
 function App() {
-  //states
+  //start-states----------------------------------------------------------------------------------------------------------
   const [notes, setNotes] = useState([]);
   const [sortBy, setSortBy] = useState("earliest"); //This state moved from NoteHeader component
+  //end-states----------------------------------------------------------------------------------------------------------
 
-  //handlers
+  //start-handlers --------------------------------------------------------------------------------------------------------
   const handleAddNote = (newNote) => {
     setNotes((prevNotes) => [...prevNotes, newNote]);
   };
@@ -32,6 +33,8 @@ function App() {
       )
     );
   };
+
+  //end-handlers --------------------------------------------------------------------------------------------------------
 
   return (
     <div className="container">
