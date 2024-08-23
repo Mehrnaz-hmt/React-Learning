@@ -33,28 +33,49 @@ function Accordion() {
       {data.map((item) => (
         <AccordionItem
           key={item.id}
-          item={item}
+          id={item.id}
+          title={item.title}
           onOpen={handleOpen}
-          // setOpen={setOpen}
+          // setOpen={setOpen} (1)
           open={open}
-        />
+        >
+          {item.text}
+        </AccordionItem>
       ))}
+      <AccordionItem
+        id="4"
+        title="Another Accordion"
+        onOpen={handleOpen}
+        // setOpen={setOpen} (1)
+        open={open}
+      >
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam
+          accusantium dolor sapiente, eum harum quo odio odit, quas deserunt,
+          vel ab fugiat nihil. Nobis iusto, dicta veritatis laudantium et porro!
+        </p>
+        <span>
+          <ul>
+            <li>One</li>
+          </ul>
+        </span>
+      </AccordionItem>
     </div>
   );
 }
 
 export default Accordion;
 
-const AccordionItem = ({ item, setOpen, open,onOpen }) => {
-  const isOpen = item.id === open; //Or: const isOpen = item.id === open ? true :false;
+const AccordionItem = ({ id,title, setOpen, open, onOpen, children }) => {
+  const isOpen =id === open; //Or: const isOpen = item.id === open ? true :false;
   return (
     <div className={`accordion-item ${isOpen ? "accordion__expanded" : ""}`}>
-      <div 
-      className="accordion-item__header" 
-      // onClick={() => setOpen(item.id)}
-      onClick={() => onOpen(item.id)}
+      <div
+        className="accordion-item__header"
+        // onClick={() => setOpen(item.id)} (1)
+        onClick={() => onOpen(id)}
       >
-        <div>{item.title}</div>
+        <div>{title}</div>
         {/* <ChevronDownIcon
           style={{
             width: "1.2rem",
@@ -86,7 +107,7 @@ const AccordionItem = ({ item, setOpen, open,onOpen }) => {
 
       {/* We can't do this because in DOM we can't write transition */}
       {/* {isOpen && <div className="accordion-item__content">{item.text}</div>} */}
-      <div className="accordion-item__content">{item.text}</div>
+      <div className="accordion-item__content">{children}</div>
     </div>
   );
 };
