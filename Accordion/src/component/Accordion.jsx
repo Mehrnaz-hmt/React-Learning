@@ -21,10 +21,18 @@ const data = [
 ];
 
 function Accordion() {
+  //states
+  const [open, setOpen] = useState(null); //This state = That accordion's id 1,2,3,...
+
   return (
     <div className="accordion">
       {data.map((item) => (
-        <AccordionItem key={item.id} item={item} />
+        <AccordionItem
+          key={item.id}
+          item={item}
+          setOpen={setOpen}
+          open={open}
+        />
       ))}
     </div>
   );
@@ -32,18 +40,11 @@ function Accordion() {
 
 export default Accordion;
 
-const AccordionItem = ({ item }) => {
-  const [isOpen, setIsOpen] = useState("false");
-
-
+const AccordionItem = ({ item, setOpen, open }) => {
+  const isOpen = item.id === open; //Or: const isOpen = item.id === open ? true :false;
   return (
     <div className={`accordion-item ${isOpen ? "accordion__expanded" : ""}`}>
-      <div
-        className="accordion-item__header"
-        onClick={function () {
-          setIsOpen((is) => !is);
-        }}
-      >
+      <div className="accordion-item__header" onClick={() => setOpen(item.id)}>
         <div>{item.title}</div>
         {/* <ChevronDownIcon
           style={{
@@ -80,17 +81,3 @@ const AccordionItem = ({ item }) => {
     </div>
   );
 };
-
-// Down
-{
-  /* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-</svg> */
-}
-
-// Up
-{
-  /* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
-</svg> */
-}
