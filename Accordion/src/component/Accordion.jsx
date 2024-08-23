@@ -26,7 +26,7 @@ function Accordion() {
 
   //handlers
   const handleOpen = (id) => {
-    setOpen(id);
+    setOpen(id === open ? null : id);
   };
   return (
     <div className="accordion">
