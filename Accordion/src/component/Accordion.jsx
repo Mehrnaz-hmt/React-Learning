@@ -67,7 +67,7 @@ function Accordion() {
 export default Accordion;
 
 const AccordionItem = ({ id,title, setOpen, open, onOpen, children }) => {
-  const isOpen =id === open; //Or: const isOpen = item.id === open ? true :false;
+  const isOpen = id === open; //Or: const isOpen = item.id === open ? true :false;
   return (
     <div className={`accordion-item ${isOpen ? "accordion__expanded" : ""}`}>
       <div
