@@ -11,4 +11,3 @@ export default function useLocalStorage(key, intialState) {
   return [value, setValue];
 }
 
-
