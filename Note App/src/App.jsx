@@ -34,6 +34,28 @@ function App() {
     );
   };
 
+
+
+  // --------------------------------------dispatch--------------------------------------------------------------------
+const initialState = {};
+
+function reducer (state,action) {
+  switch(action.type) {
+    case 'add' :
+      return setNotes(prevNotes => [...prevNotes, newNote])
+  case 'delete':
+    return setNotes(prevNotes => prevNotes.filter((note) => note.id !== id))
+
+}
+
+
+
+
+
+
+  // --------------------------------------dispatch--------------------------------------------------------------------
+
+
   //end-handlers --------------------------------------------------------------------------------------------------------
 
   return (
