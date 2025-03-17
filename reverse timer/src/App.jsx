@@ -6,17 +6,21 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
 
 function App() {
+
   const [value, setValue] = useState(0);
+  const [name, setName] = useState('');
+
   const handleInputChange = (value) => {
     console.log("Input value:", value);
   };
+
+
 
   return (
     <div className="App">
       <h1>Simple Input Example</h1>
 
-      <div className="mar" style={{display:"flex"}}>
-        
+      <div className="mar" style={{ display: "flex" }}>
         <SimpleInput
           placeholder="Enter some text"
           onChange={handleInputChange}
@@ -25,7 +29,6 @@ function App() {
         <div style={{ margin: "20px" }}>
           <input type="time" />
         </div>
-
       </div>
 
       <div>
@@ -37,6 +40,8 @@ function App() {
           plugins={[<TimePicker position="bottom" />]}
         />
       </div>
+
+     
     </div>
   );
 }
